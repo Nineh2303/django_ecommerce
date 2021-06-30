@@ -1,0 +1,23 @@
+{% extends '../../store/base.html' %}
+{% block title %} {% endblock %}
+
+{% block content %}
+{% if request.user.is_authenticated %}
+<script>
+    window.location.href = '{% url "account:dashboard" %}';
+</script>
+{% endif %}
+<div>
+    <div>
+        {% if 'email' in request.get_full_path %}
+            <h1> Password reset success </h1> <br/>
+            <p> Check your email for instructions</p>
+        {% endif %}
+
+        {% if 'complete' in request.get_full_path %}
+            <h3> Password reset success </h3> <br/>
+            <a href="{% url 'account:login' %}"> Login </a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "../../store/base.html" %}
+{% load static %}
+{% block title %} Register {% endblock %}
+{% block content %}
+
+
+<div class="account-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-2">
+                <img src="{% static 'image/canoneos850d_luam.jpeg' %}" width="100%">
+            </div>
+            <div class="col-2">
+                <div class="form-container">
+                    <div class="form-btn">
+                        <span>Login</span>
+                        <hr class="Indicator">
+                    </div>
+                    <form action="." method="post">
+                      {% csrf_token %}
+                        {% if form.errors %}
+                        <p> Username or password is not correct </p>
+                        {% endif %}
+                         <div>{{ form.username.label }}(required)</div>
+                        {{ form.username }}
+                        <div>{{ form.password.label }}(required)</div>
+                        {{ form.password }}
+                        <button type="submit" class="btn">
+                            Register
+                        </button>
+                        <p> Are you fogotten your pasword <a href="{% url 'account:pwdreset' %}" style="color:dodgerblue">Click here</a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

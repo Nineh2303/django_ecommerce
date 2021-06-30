@@ -1,0 +1,45 @@
+{% extends "../base.html" %}
+{% load static %}
+{% block title%}
+{% if category %} {{ category.name }} {% else %} Products {% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="small-container">
+    <div class="row row-2">
+        <h2>Category / {{ category.name }}</h2>
+        <select>
+            <option>Default Sorting</option>
+            <option>Sort by price</option>
+            <option>Sort by popularity</option>
+            <option>Sort by rating</option>
+            <option>Sort by sale</option>
+        </select>
+    </div>
+    <div class="row">
+        {% for product in products %}
+        <div class="col-4">
+            <a href="/product/{{ product.get_absolute_url }}">
+                <img src="{{ product.image.url }}" alt="">
+                <h4> {{ product.title }} </h4>
+                <div class="rating">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                </div>
+            </a>
+            <p>${{ product.price }}</p>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="page-select">
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span>
+        <span>&#8594</span>
+    </div>
+</div>
+{% endblock %}

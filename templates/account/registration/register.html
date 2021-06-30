@@ -1,0 +1,47 @@
+{% extends "../../store/base.html" %}
+{% load static %}
+{% block title %} Register {% endblock %}
+{% block content %}
+
+
+<div class="account-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-2">
+                <img src="{% static 'image/canoneos850d_luam.jpeg' %}" width="100%">
+            </div>
+            <div class="col-2">
+                <div class="form-container">
+                    <div class="form-btn">
+                        <span onclick="register()">Register</span>
+                        <hr class="Indicator">
+                    </div>
+                    <form action="." method="post">
+                        {% csrf_token %}
+                        {% if form.errors %}
+                        <p> Please following the errors :</p>
+                        {% for field in form %}
+                        {% if field.errors %}
+                            {{ field.label }} : {{ field.errors|striptags }}
+                        {% endif %}
+                        {% endfor %}
+                        {% endif %}
+                        <div>{{ form.user_name.label }}(required)</div>
+                        {{ form.user_name }}
+                        <div>{{ form.email.label }}(required)</div>
+                        {{ form.email }}
+                        <div>{{ form.password.label }} (required)</div>
+                        {{ form.password }}
+                        <div>{{ form.password2.label }}(required)</div>
+                        {{ form.password2 }}
+                        <button type="submit" class="btn">
+                            Register
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

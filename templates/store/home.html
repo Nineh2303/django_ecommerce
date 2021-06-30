@@ -1,0 +1,198 @@
+{% extends "./base.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecommerce</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+
+</head>
+
+<body>
+        {% block content %}
+        <div class="row">
+            <div class="col-2">
+                <h1>Take All Memories<br> With Our Products </h1>
+                <p>Sucess isn't...................</p>
+                <a href="" class="btn"> Explore Now &#8594;</a>
+            </div>
+            <div class="title">
+            <div class="col-2">
+                <img src="{% static 'image/canoneos850d_luam.jpeg' %}" alt="">
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+<main>
+    <div class="categories">
+        <div class="row">
+            <div class="small-container">
+                 <h2 class='title'>Category</h2>
+                <div class="row">
+                    {% for category in categories %}
+                    <div class="col-3">
+                        <a href="shop/{{category.get_absolute_url}}"><img src="{{ category.image.url }}"></a>
+                        <a href="">
+                            <h3 class="category-title">{{ category.name}}<h3>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Feature Products-->
+    <div class="small-container">
+        <h2 class='title'>Featured Products</h2>
+        <div class="row">
+            {% for product in products%}
+            <div class="col-4">
+                <a href="product/{{ product.get_absolute_url}} "><img src="{{ product.image.url }}" alt=""></a>
+                <h4>{{ product.title }}</h4>
+                <div class="rating">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                </div>
+                <p>$200</p>
+            </div>
+            {% endfor %}
+            <h2 class="title">Latest Product</h2>
+        </div>
+
+        <!-- offer-->
+        <div class="offer">
+            <div class="small-container">
+                <div class="row">
+                    <div class="col-2">
+                        <img src="{% static 'image/exponsive.jpg' %}" class="offer-image">
+                    </div>
+                    <div class="col-2">
+                        <p> Exclusively Availble on Store</p>
+                        <h1> Sony a9 - The best Camera</h1>
+                        <small> This is the desc</small>
+                        <br/>
+                        <a href="#" class="btn"> Buy now &#8594;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Testimonial-->
+        <div class="testimonial">
+            <div class="small-container">
+                <div class="row">
+                    <div class="col-3">
+                        <i class="fa qoute-left" aria-hidden="true"></i>
+                        <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur eos qui eaque, corrupti
+                            debitis officiis aut quidem aperiam ut! Tenetur!</p>
+                        <div class="rating">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <i class="fa qoute-left" aria-hidden="true"></i>
+                        <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur eos qui eaque, corrupti
+                            debitis officiis aut quidem aperiam ut! Tenetur!</p>
+                        <div class="rating">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <i class="fa qoute-left" aria-hidden="true"></i>
+                        <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur eos qui eaque, corrupti
+                            debitis officiis aut quidem aperiam ut! Tenetur!</p>
+                        <div class="rating">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+        </div>
+    </div>
+</main>
+<!-- Feature Category-->
+
+
+<!-- brands-->
+<div class="brands">
+    <div class="small-container">
+        <div class="row">
+            <div class="col-5">
+                <img src="{% static 'image/logo-canon.jpg' %}" alt="">
+            </div>
+            <div class="col-5">
+                <img src=" {% static 'image/logo-nikon.jpg' %}" alt="">
+            </div>
+            <div class="col-5">
+                <img src=" {% static 'image/logo-sony.jpg' %}" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+<div class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="footer-col-1">
+                <h3>Download our app !</h3>
+            </div>
+            <div class="footer-col-2">
+                <img src="{% static '/image/logo.png' %}" alt="">
+            </div>
+            <div class="footer-col-3">
+                <h3>Useful links</h3>
+                <ul>
+                    <li>Link</li>
+                    <li>Link</li>
+                    <li>Link</li>
+                </ul>
+            </div>
+            <div class="footer-col-4">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li>Facebook</li>
+                    <li>Instagram</li>
+                    <li>Twitter</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var MenuItems = document.getElementById("menuItems");
+    MenuItems.style.maxHeight = "0px";
+
+    function menutoggle() {
+        if (MenuItems.style.maxHeight == "0px") {
+            MenuItems.style.maxHeight = "200px"
+        } else {
+            MenuItems.style.maxHeight = "0px"
+        }
+    }
+</script>
+</body>
+
+</html>

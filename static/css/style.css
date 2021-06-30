@@ -1,0 +1,365 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans&display=swap');
+*{
+    margin: 0 ;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Merriweather Sans', sans-serif;
+}
+.container {
+    max-width:  1300px;
+    margin :auto ;
+    padding-left:  25px;
+    padding-right : 25px;
+}
+.navbar{
+    display :flex;
+    align-items : center ;
+    padding : 20px;
+}
+nav {
+    flex : 1 ;
+    text-align : right ;
+}
+nav ul {
+    display : inline-block;
+    list-style-type: none;
+
+}
+nav ul li {
+    display : inline-block;
+    margin-right:  20px;
+}
+a{
+    text-decoration: none ;
+    color :#555 ;
+}
+p{
+    color : #555;
+
+}
+.row {
+    display :flex  ;
+    align-items : center ;
+    flex-wrap:  wrap;
+    justify-content: space-around;
+}
+.col-2 {
+    flex-basis:  50%;
+    min-width: 300px;
+
+}
+.col-2 img{
+    max-width:  100%;
+    padding : 50px 0 ;
+}
+.col-2 h1 {
+    font-size :50px;
+    line-height  : 60px;
+    margin :  25 0;
+}
+.btn {
+    display : inline-block ;
+    background :#ff523b;
+    color : #fff;
+    padding : 8px 30px;
+    margin : 30px 0 ;
+    border-radius : 30px;
+    transition: background 0.5s ;
+}
+.btn:hover{
+    background: #563434 ;
+}
+.header {
+    background: radial-gradient(#fff, #ffd6d6);
+}
+.categories {
+    margin: 70px 0;
+}
+.col-3 {
+        flex-basis :30% ;
+        min-width : 250px;
+        margin-bottom : 30px;
+}
+.col-3 img {
+    width : 100%;
+    padding: 30px;
+}
+.small-container {
+    max-width: 1050px;
+    margin: auto;
+    padding-left : 25px;
+    padding-right : 25px;
+}
+.col-4 {
+    flex-basis : 25%;
+    padding :10px;
+    min-width: 200px;
+    margin-bottom: 50px;
+    transition: transform 0.5s;
+}
+.col-4 img {
+    width : 100%;
+}
+.title{
+    text-align : center;
+    margin : 0 auto 80px;
+    position:  relative;
+    line-height: 60px;
+    color : #555;
+}
+.title::after{
+    content :'' ;
+    background : #ff523b ;
+    width : 80px;
+    height:  5px;
+    border-radius:  5px;
+    position: absolute ;
+    bottom : 0;
+    left : 50%;
+    transform : translateX(-50%)
+}
+.category-title{
+    color : #555 ;
+    text-align: center;
+}
+h4{
+    color : #555 ;
+    font-weight : normal;
+
+}
+.col-4 {
+    font-size: 14px;
+
+}
+.rating .fa {
+    color : #ff523b ;
+
+}
+.col-4:hover {
+    transform : translateY(-5px)
+}
+.offer{
+    background: radial-gradient(#fff, #ffd6d6);
+    margin-top :  80px;
+    padding : 30px  0 ;
+}
+.col-2 .offer-image {
+    padding :50px;
+}
+small {
+    color :#555 ;
+}
+.brands{
+    margin : 100px auto;
+}
+.col-5 {
+    width : 160px;
+}
+.col-5 img {
+    width: 125%;
+    cursor: pointer;
+    filter: grayscale(50%);
+}
+.col-5 img:hover{
+    filter: grayscale(0);
+}
+
+ /* -----------alert-------------- */
+.alert {
+    margin-top : 20px;
+    background-color:#f06755 ;
+    width : 1200px;
+    height : 50px;
+    border-radius : 50px;
+    text-align : center
+
+
+}
+
+/* ------------------footer--------------*/
+.footer{
+    background :#000;
+    color : #8a8a8a ;
+    padding :60px 0 20px;
+}
+.footer p{
+    color : #8a8a8a;
+
+}
+.footer h3 {
+    color :#fff;
+    margin-bottom: 20px;
+}
+.footer-col-1 , .footer-col-2, .footer-col-3, .footer-col-4{
+    min-width: 250px;
+    margin-bottom: 20px;
+}
+.footer-col-1{
+    flex-basis: 30%;
+}
+.footer-col-2{
+    flex :1 ;
+    text-align: center;
+}
+.footer-col-2 img {
+    width : 180px;
+    margin-bottom:  20px;
+}
+.footer-col-3, .footer-col-4 {
+    flex-basis: 12%;
+    text-align: center;
+}
+.menu-icon{
+    width: 20px;
+    margin-left: 20px;
+    display: none;
+}
+
+
+ /* -------ALL PRODUCTS PAGE-----------*/
+ .row-2 {
+     justify-content: space-between;
+     margin : 100px auto 50px;
+ }
+ select{
+     border: 1px solid #ff523b;
+     padding :5px;
+ }
+ select:focus{
+     outline : none;
+ }
+
+.page-btn{
+    margin : 0 auto 80px;
+}
+
+.page-btn span {
+    display: inline-block;
+    border : 1px solid #ff523b;
+    margin-left:  10px;
+    width : 40px;
+    height :40px;
+    text-align: center;
+    line-height : 40px;
+    cursor : pointer;
+}
+.page-btn span:hover{
+    background-color: #ff523b;
+    color : #fff;
+}
+
+.single-product {
+    margin-top:  80px;
+}
+.single-product .col-2 img {
+    padding :0;
+}
+.single-product .col-2 {
+    padding :10px;
+}
+.single-product h4 {
+        margin :20px 0 ;
+        font-size: 25px;
+        font-weight: bold;
+}
+.single-product select {
+    display :block;
+    padding :10px;
+    margin-top:  20px;
+}
+.single-product input{
+    width : 50px;
+    height :40px;
+    padding-left: 10px;
+    font-size: 20px;
+    margin-right: 10px;
+    border  : 1px solid #ff523b ;
+}
+button:focus {
+    outline :none ;
+}
+.single-product .fa {
+    color : #ff523b ;
+    margin-left :10px;
+}
+ /* --------------------dropdown menu --------------- */
+nav ul li .dropdown {
+    margin-top: 10px;
+    float: left;
+    overflow: hidden;
+  }
+
+    .dropdown .dropbtn {
+      font-size: 16px;
+      border: none;
+      outline: none;
+      color:  #555 ;
+      padding: 14px 16px;
+      background-color: inherit;
+      font-family: inherit;
+      margin: 0;
+    }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #FFECEC ;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+
+  .dropdown-content a {
+    float: none;
+    color: #555;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+
+  .dropdown-content a:hover {
+    background-color: #ddd;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+/* media query to menu */
+
+@media only screen and (max-width: 800px){
+    nav ul {
+        position: absolute;
+        top :70px;
+        left :0;
+        background : #333 ;
+        width : 100%;
+        overflow:  hidden;
+        transition: max-height 0.5s;
+    }
+    nav ul li {
+        display : block;
+        margin-right:50px;
+        margin-top: 10px;
+        margin-bottom :10px;
+    }
+    nav ul li a {
+        color :#fff;
+    }
+    .menu-icon{
+        display : block;
+        cursor: pointer;
+    }
+}
+
+
+@media only screen and (max-width: 600px) {
+    .row{
+        text-align: center;
+    }
+    .col-2, .col-3, .col-4{
+        flex-basis : 100%;
+    }
+}
+

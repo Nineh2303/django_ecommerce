@@ -1,0 +1,128 @@
+{% extends "store/base.html" %}
+{% load static %}
+{% block title %}
+Basket Summary
+{% endblock %}
+
+
+{% block content %}
+<div class="small-container cart-page">
+    <table>
+        <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Subtitle</th>
+            <th>Status</th>
+        </tr>
+        {% for item in basket %}
+        {% with product=item.product %}
+            <tr class="product-item" data-index="{{ product.id }}" >
+                <td>
+                    <div class="cart-info">
+                        <img src="{{ product.image.url }}">
+                        <div class="info-single">
+                            <p> {{ product.title }} </p>
+                            <small> Price : {{ product.price }}</small>
+                            <br/>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <select name="" id="select{{product.id}}">
+                        <option value="">Select Quantity</option>
+                        <option value="" selected disabled hidden>{{ item.quantity }}</option>
+                        <option value="">1</option>
+                        <option value="">2</option>
+                        <option value="">3</option>
+                        <option value="">4</option>
+                    </select>
+                </td>
+                <td></td>
+                <td>
+                    <a type="button" id="update-button" data-index="{{product.id}}"
+                       class="update-button text-decoration-none">
+                        <button class="btn">Update</button>
+                    </a>
+                    <a type="button" id="delete-button" data-index="{{product.id}}"
+                       class="delete-button text-decoration-none">
+                        <button class="btn">Remove</button>
+                    </a>
+                </td>
+            </tr>
+        {% endwith %}
+        {% endfor %}
+    </table>
+    <div class="total-price">
+        <table>
+            <tr>
+                <td>Subtotal :</td>
+                <td>$<span id="subtotal">{{ basket.get_subtotal_price }}</span></td>
+            </tr>
+            <tr>
+                <td>Delivery:</td>
+                <td>$<span>11.50</span></td>
+            </tr>
+            <tr>
+                <td>Total :</td>
+                <td>$<span id="total">{{ basket.get_total_price }}</span></td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<script>
+    $(document).on('click', ".delete-button", function (e) {
+        e.preventDefault();
+        var proId = $(this).data("index");
+        $.ajax({
+            type: "POST",
+            url: '{% url "basket:basket_delete" %}',
+            data: {
+                productId: $(this).data("index"),
+                csrfmiddlewaretoken: "{{csrf_token}}",
+                action: "post",
+            },
+            success: function (json) {
+                $('.product-item[data-index="' + proId + '"]').remove();
+
+                if (json.quantity == 0) {
+                    total = 0
+                    subtotal = 0
+                } else {
+                    total = (parseFloat(json.total) + 11.50).toFixed(2);
+                    subtotal = json.total
+                }
+                document.getElementById('subtotal').innerHTML = json.total;
+                document.getElementById("basket-qty").innerHTML = json.quantity;
+                document.getElementById("total").innerHTML = total
+            },
+            error: function (xhr, errmsg, err) {
+            }
+        });
+    });
+    //update item
+    $(document).on('click', ".update-button", function (e) {
+        e.preventDefault();
+        var proId = $(this).data("index");
+        $.ajax({
+            type: "POST",
+            url: "{% url 'basket:basket_update' %}",
+            data: {
+                productId: $(this).data("index"),
+                productQuantity: $("#select" + proId + " option:selected").text(),
+                csrfmiddlewaretoken: "{{csrf_token}}",
+                action: "post",
+            },
+            success: function (json) {
+                total = (parseFloat(json.subtotal) + 11.50).toFixed(2);
+                document.getElementById("basket-qty").innerHTML = json.quantity;
+                document.getElementById("subtotal").innerHTML = json.subtotal;
+                document.getElementById("total").innerHTML = total;
+            },
+            error: function (xhr, errmsg, err) {
+            },
+        });
+    });
+</script>
+
+{% endblock %}

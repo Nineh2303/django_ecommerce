@@ -1,0 +1,53 @@
+{% extends "../../store/base.html" %}
+{% load static %}
+{% block title %} Register {% endblock %}
+{% block content %}
+
+
+<div class="account-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-2">
+                <img src="{% static 'image/canoneos850d_luam.jpeg' %}" width="100%">
+            </div>
+            <div class="col-2">
+                <div class="form-container">
+                    <div class="form-btn">
+                        <span>Register</span>
+                        <hr class="Indicator">
+                    </div>
+                        <form method="post" enctype="multipart/form-data">
+                            {% if user_form.is_valid %}
+                            <p>Detail successfully updated</p>
+                            <a href="{% url 'account:dashboard' %}"> Back to Dashboard</a>
+                            {% else %}
+                            <h3> Change your details</h3>
+                            <p> You can edit your account using the following form :</p>
+                            {% endif %}
+                            {% if user_form.error %}
+                            Error : Please try again !!
+                            {% endif %}
+
+                            {% csrf_token %}
+                            <div>{{ user_form.email.label }}</div>
+                                    {{ user_form.email }}
+                            <div>{{ user_form.first_name.label }}</div>
+                                    {{ user_form.first_name }}
+<!--                            <div>{{ user_form.country.label }}</div>-->
+<!--                                    {{ user_form.country }}-->
+                            <button type="submit" class="btn">Update</button>
+                        </form>
+                    <form method="post" style="margin-top:270px;" action="{% url 'account:delete_user' %}">
+                         {% csrf_token %}
+                           <h2> Delete account </h2>
+                            <p>Are you sure you want to delete your account ?</p>
+                            <button type="submit" class="btn" style="background-color:#ff0000;">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

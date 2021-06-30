@@ -1,0 +1,26 @@
+{% extends '../../store/base.html' %}
+{% block title %} Reset Password {% endblock %}
+{% block content %}
+
+{% if request.user.is_authenticated %}
+<script>
+    window.location.href = '{% url "account:dashboard" %}'
+</script>
+{% endif %}
+
+<div>
+    <div>
+        <form action="{% url 'account:pwdreset' %}" method="post">
+            <p> Forgotten your password ? </p> <br/>
+            <p> Enter your email address to obtain a new password </p> <br/>
+            {% if form.errors %}
+                <p> Please try again !</p>
+            {% endif %}
+            {% csrf_token %}
+             <div>{{ form.email.label }}(required)</div>
+                        {{ form.email }}
+            <button class="btn"><a href="{% url 'account:login' %}"> Send Email </a></button>
+        </form>
+    </div>
+</div>
+{% endblock %}

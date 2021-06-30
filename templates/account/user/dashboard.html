@@ -1,0 +1,8 @@
+{% extends "../../store/base.html" %}
+{% load static %}
+{% block title%}PhotoStore{% endblock %}
+
+{% block content %}
+    Your Dashboard
+<a href="{% url 'account:edit_details' %}"> Change profile </a>
+    {% endblock %}
