@@ -1,0 +1,74 @@
+{% extends '../store/base.html' %}
+{% load static %}
+{% block title %} Payment {% endblock %}
+{% block link %}
+<link rel="stylesheet" href="{% static 'css/payment/billing.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="wrapper" id="payment-form">
+    <h2>Billding Address</h2>
+    <div id="card-errors" role="alert" class="a">
+        <form method="post">
+            <h4>Account</h4>
+            <div class="input-group">
+                <div class="input-box">
+                    <input type="text" placeholder="Customer Name" class="name" id="custName" required>
+                    <i class="fa fa-user icon"></i>
+                </div>
+            </div>
+            <div class="input-group">
+                <div class="input-box">
+                    <input type="email" placeholder="Email Adress" class="name" , required>
+                    <i class="fa fa-envelope icon"></i>
+                </div>
+            </div>
+            <div class="input-group">
+                <div class="input-box">
+                    <input type="text" placeholder="Address" class="name" id="custAdd" required>
+                    <i class="fa fa-envelope icon"></i>
+                </div>
+            </div>
+            <div class="input-group">
+                <div class="input-box">
+                    <input type="text" placeholder="Address 2" class="name" id="custAdd2" required>
+                    <i class="fa fa-envelope icon"></i>
+                </div>
+            </div>
+            <div class="input-group">
+                <div class="input-box">
+                    <h4>Country</h4>
+                    <select class="pay-select">
+                        <option>Choose..</option>
+                    </select>
+                </div>
+                <div class="input-box">
+                    <h4>State</h4>
+                    <select class="pay-select">
+                        <option>Choose..</option>
+                    </select>
+                </div>
+                <div class="input-box">
+                    <h4>Postcode</h4>
+                    <input type="text" placeholder="Postcode" id="postCode" class="pay">
+                </div>
+            </div>
+            <h4>Payment</h4>
+            <span>Credit or debit card</span>
+            <div id="card-element">
+            </div>
+            <div class="input-group">
+                <div class="input-box">
+                    <button id="submit" data-secret="{{ client_secret }}"> Pay now</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+<script>
+    var CSRF_TOKEN = '{{ csrf_token }}';
+</script>
+<script src="https://js.stripe.com/v3"></script>
+<script src="{% static 'js/payment/index.js' %}" data-rel-js></script>
+{% endblock %}

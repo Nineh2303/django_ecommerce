@@ -4,7 +4,9 @@
 Basket Summary
 {% endblock %}
 
-
+{% block link %}
+<link rel="stylesheet" href="{% static '/css/cart.css' %}">
+{% endblock %}
 {% block content %}
 <div class="small-container cart-page">
     <table>
@@ -16,39 +18,39 @@ Basket Summary
         </tr>
         {% for item in basket %}
         {% with product=item.product %}
-            <tr class="product-item" data-index="{{ product.id }}" >
-                <td>
-                    <div class="cart-info">
-                        <img src="{{ product.image.url }}">
-                        <div class="info-single">
-                            <p> {{ product.title }} </p>
-                            <small> Price : {{ product.price }}</small>
-                            <br/>
-                        </div>
+        <tr class="product-item" data-index="{{ product.id }}">
+            <td>
+                <div class="cart-info">
+                    <img src="{{ product.image.url }}">
+                    <div class="info-single">
+                        <p> {{ product.title }} </p>
+                        <small> Price : {{ product.price }}</small>
+                        <br/>
                     </div>
-                </td>
-                <td>
-                    <select name="" id="select{{product.id}}">
-                        <option value="">Select Quantity</option>
-                        <option value="" selected disabled hidden>{{ item.quantity }}</option>
-                        <option value="">1</option>
-                        <option value="">2</option>
-                        <option value="">3</option>
-                        <option value="">4</option>
-                    </select>
-                </td>
-                <td></td>
-                <td>
-                    <a type="button" id="update-button" data-index="{{product.id}}"
-                       class="update-button text-decoration-none">
-                        <button class="btn">Update</button>
-                    </a>
-                    <a type="button" id="delete-button" data-index="{{product.id}}"
-                       class="delete-button text-decoration-none">
-                        <button class="btn">Remove</button>
-                    </a>
-                </td>
-            </tr>
+                </div>
+            </td>
+            <td>
+                <select name="" id="select{{product.id}}">
+                    <option value="">Select Quantity</option>
+                    <option value="" selected disabled hidden>{{ item.quantity }}</option>
+                    <option value="">1</option>
+                    <option value="">2</option>
+                    <option value="">3</option>
+                    <option value="">4</option>
+                </select>
+            </td>
+            <td></td>
+            <td>
+                <a type="button" id="update-button" data-index="{{product.id}}"
+                   class="update-button text-decoration-none">
+                    <button class="btn">Update</button>
+                </a>
+                <a type="button" id="delete-button" data-index="{{product.id}}"
+                   class="delete-button text-decoration-none">
+                    <button class="btn">Remove</button>
+                </a>
+            </td>
+        </tr>
         {% endwith %}
         {% endfor %}
     </table>
@@ -66,8 +68,10 @@ Basket Summary
                 <td>Total :</td>
                 <td>$<span id="total">{{ basket.get_total_price }}</span></td>
             </tr>
+
         </table>
     </div>
+    <a href="{% url 'payment:basket' %}" type="button" class="btn" style="margin-left:650px;"> Checkout </a>
 </div>
 
 <script>

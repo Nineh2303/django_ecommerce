@@ -10,9 +10,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="{% static '/css/style.css' %}">
-    <link rel="stylesheet" href="{% static '/css/cart.css' %}">
-    <link rel="stylesheet" href="{% static '/css/account/account.css' %}">
 
+    <link rel="stylesheet" href="{% static '/css/account/account.css' %}">
+    {% block link %}
+    {% endblock %}
 </head>
 <body>
 <div class="container">
