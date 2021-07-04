@@ -24,7 +24,7 @@ Basket Summary
                     <img src="{{ product.image.url }}">
                     <div class="info-single">
                         <p> {{ product.title }} </p>
-                        <small> Price : {{ product.price }}</small>
+                        <small> Price : {{ product.price }}</small><br/>
                         <br/>
                     </div>
                 </div>
@@ -39,7 +39,10 @@ Basket Summary
                     <option value="">4</option>
                 </select>
             </td>
-            <td></td>
+            <td>
+                <small style ="font-size :20px; color: orangered;">$</small>
+                <small style ="font-size :20px; color: orangered;" id="pertotal{{product.id}}">{{ item.total_price }}</small>
+            </td>
             <td>
                 <a type="button" id="update-button" data-index="{{product.id}}"
                    class="update-button text-decoration-none">
@@ -122,6 +125,7 @@ Basket Summary
                 document.getElementById("basket-qty").innerHTML = json.quantity;
                 document.getElementById("subtotal").innerHTML = json.subtotal;
                 document.getElementById("total").innerHTML = total;
+                document.getElementById("pertotal" + proId).innerHTML = json.per;
             },
             error: function (xhr, errmsg, err) {
             },

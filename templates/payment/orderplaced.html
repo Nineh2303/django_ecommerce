@@ -1,0 +1,12 @@
+{% extends '../store/base.html' %}
+{% load static %}
+{% block title %} Payment {% endblock %}
+{% block link %}
+<link rel="stylesheet" href="{% static 'css/payment/billing.css' %}">
+{% endblock %}
+
+{% block content %}
+                <h3> Order has been placed</h3>
+                <p> Check your email for cofirmation</p>
+                <a href="{% url 'account:dashboard' %}"> See orders</a>
+{% endblock %}

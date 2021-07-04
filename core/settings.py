@@ -7,7 +7,7 @@ SECRET_KEY = 'django-insecure-t1+w%%1u44=39ea5q@6%2%i0wp1q588tvb9^974do-_o+l*8fg
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['yourdomain.com', '127.0.0.1']
+ALLOWED_HOSTS = ['yourdomain.com', '127.0.0.1', 'localhost']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -20,6 +20,7 @@ INSTALLED_APPS = [
     'basket',
     'account',
     'payment',
+    'orders',
 
 ]
 
@@ -112,3 +113,6 @@ LOGIN_URL = '/account/login'
 
 # Email setting
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+#Stripe payment __ secret endpoint
+STRIPE_ENDPOINT_SECRET = ' whsec_HMtEC4vCL6tKsxQqQJlO5UWRPS9sAhX7'
